@@ -1,0 +1,3 @@
+rootProject.name='Kale-Demo'
+include ':app'
+include ':mvi-kale'

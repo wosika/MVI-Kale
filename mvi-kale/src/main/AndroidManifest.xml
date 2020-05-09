@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.wosika.kale">
+
+    <application>
+        <provider
+            android:name=".InstallProvider"
+            android:authorities="${applicationId}.kale.installProvider"
+            android:exported="false" />
+    </application>
+</manifest>
