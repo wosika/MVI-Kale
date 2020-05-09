@@ -1,14 +1,25 @@
 package com.wosika.kale.demo
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class MainActivity : AppCompatActivity() {
+import com.wosika.kale.base.BaseActivity
+
+
+class MainActivity : BaseActivity<MainViewModel, MainViewState, MainIntent>() {
+
+    override val viewModel: MainViewModel by lazy { createViewModel<MainViewModel>() }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        viewModel.intent(MainIntent.InitIntent)
+    }
 
+
+    override fun render(viewState: MainViewState) {
 
     }
+
+
 }
