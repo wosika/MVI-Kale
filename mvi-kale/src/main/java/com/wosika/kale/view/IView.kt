@@ -8,8 +8,10 @@ import com.wosika.kale.viewstate.IViewState
 interface IView<VM : IViewModel<I, VS>, VS : IViewState, I : IIntent> {
 
 
-    /*当重写viewModel时，请使用 by lazy 函数进行viewModel的初始化，
-    否则在activity或者fragment生命周期尚未初始化时就初始化viewModel会出现崩溃*/
+    /**
+     * 当重写viewModel时，请使用 by lazy 函数进行viewModel的初始化，
+     * 否则在activity或者fragment生命周期尚未初始化时就初始化viewModel会出现崩溃
+     */
     val viewModel: VM
 
     fun render(viewState: VS)
