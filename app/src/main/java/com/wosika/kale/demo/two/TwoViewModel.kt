@@ -18,11 +18,7 @@ class TwoViewModel : BaseViewModel<TwoViewState, TwoIntent>() {
     private fun initData() {
         //返回一个刷新状态
         viewStateLiveData.postValue(
-            TwoViewState(
-                true,
-                null,
-                null
-            )
+            TwoViewState(true)
         )
         //加载
         viewModelScope.launch {
@@ -30,18 +26,12 @@ class TwoViewModel : BaseViewModel<TwoViewState, TwoIntent>() {
             val random = (1..2).random()
             if (random == 1) {
                 viewStateLiveData.postValue(
-                    TwoViewState(
-                        false,
-                        "result data",
-                        null
-                    )
+                    TwoViewState(data = "result data")
                 )
             } else {
                 viewStateLiveData.postValue(
                     TwoViewState(
-                        false,
-                        null,
-                        Exception()
+                        error = Exception()
                     )
                 )
             }

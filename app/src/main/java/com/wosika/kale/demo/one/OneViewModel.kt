@@ -18,11 +18,7 @@ class OneViewModel : BaseViewModel<OneViewState, OneIntent>() {
     private fun initData() {
         //返回一个刷新状态
         viewStateLiveData.postValue(
-            OneViewState(
-                true,
-                null,
-                null
-            )
+            OneViewState(isRefresh = true)
         )
         //加载
         viewModelScope.launch {
@@ -30,18 +26,12 @@ class OneViewModel : BaseViewModel<OneViewState, OneIntent>() {
             val random = (1..2).random()
             if (random == 1) {
                 viewStateLiveData.postValue(
-                    OneViewState(
-                        false,
-                        "result data",
-                        null
-                    )
+                    OneViewState(data = "result data")
                 )
             } else {
                 viewStateLiveData.postValue(
                     OneViewState(
-                        false,
-                        null,
-                        Exception()
+                        error = Exception()
                     )
                 )
             }
