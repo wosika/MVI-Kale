@@ -14,5 +14,9 @@ interface IView<VM : IViewModel<I, VS>, VS : IViewState, I : IIntent> {
      */
     val viewModel: VM
 
+
+    /**
+     * viewModel需要处理Intent之后，会将viewState回调到这个方法上
+     */
     fun render(viewState: VS)
 }
