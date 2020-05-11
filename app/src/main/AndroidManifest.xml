@@ -16,6 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".one.OneActivity" />
+        <activity android:name=".two.EmptyActivity" />
     </application>
 
 </manifest>

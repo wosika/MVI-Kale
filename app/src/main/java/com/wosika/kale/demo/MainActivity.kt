@@ -1,52 +1,23 @@
 package com.wosika.kale.demo
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import com.google.android.material.snackbar.Snackbar
-
-import com.wosika.kale.base.BaseActivity
+import androidx.appcompat.app.AppCompatActivity
+import com.wosika.kale.demo.one.OneActivity
+import com.wosika.kale.demo.two.EmptyActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-
-class MainActivity : BaseActivity<MainViewModel, MainViewState, MainIntent>() {
-
-    override val viewModel: MainViewModel by lazy { createViewModel<MainViewModel>() }
-
-
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        binds()
-        viewModel.intent(MainIntent.InitIntent)
-    }
 
-    private fun binds() {
-        btnRetry.setOnClickListener {
-            viewModel.intent(MainIntent.InitIntent)
+        btnToActivity.setOnClickListener {
+            startActivity(Intent(this, OneActivity::class.java))
         }
 
-        srlRefresh.setOnRefreshListener {
-            viewModel.intent(MainIntent.InitIntent)
+        btnToFragment.setOnClickListener {
+            startActivity(Intent(this, EmptyActivity::class.java))
         }
     }
-
-
-    override fun render(viewState: MainViewState) {
-        srlRefresh.isRefreshing = viewState.isRefresh
-        if (!viewState.data.isNullOrBlank()) {
-            tvContent.text = viewState.data
-            tvContent.visibility = View.VISIBLE
-        } else {
-            tvContent.visibility = View.GONE
-        }
-
-        if (viewState.error != null) {
-            Snackbar.make(srlRefresh, "出现错误", Snackbar.LENGTH_SHORT).show()
-            btnRetry.visibility = View.VISIBLE
-        } else {
-            btnRetry.visibility = View.GONE
-        }
-    }
-
-
 }

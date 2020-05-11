@@ -2,13 +2,16 @@ package com.wosika.kale
 
 import android.content.ContentProvider
 import android.content.ContentValues
+import android.content.Context
 import android.database.Cursor
 import android.net.Uri
 
+//此处对外提供一个全局application
+lateinit var globalContext: Context
 class InstallProvider : ContentProvider() {
-
     override fun onCreate(): Boolean {
         //todo 在这里做框架的初始化
+        globalContext = context!!.applicationContext
         return true
     }
 
