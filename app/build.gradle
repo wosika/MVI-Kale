@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-
+apply plugin: 'kotlinx-serialization'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "com.wosika.kale.demo"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -38,4 +38,16 @@ dependencies {
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
     implementation 'com.google.android.material:material:1.1.0'
+
+
+
+    //log 工具类
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+    
+    //网络请求 使用fuel
+    implementation "com.github.kittinunf.fuel:fuel:$fuel_version"
+    implementation "com.github.kittinunf.fuel:fuel-android:$fuel_version"
+    implementation "com.github.kittinunf.fuel:fuel-coroutines:$fuel_version"
+    implementation "com.github.kittinunf.fuel:fuel-gson:$fuel_version"
+
 }

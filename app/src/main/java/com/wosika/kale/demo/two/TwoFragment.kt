@@ -5,9 +5,10 @@ import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import com.wosika.kale.base.BaseFragment
 import com.wosika.kale.demo.R
+import com.wosika.kale.viewmodel.createViewModel
 import kotlinx.android.synthetic.main.activity_one.*
 
-class TwoFragment : BaseFragment<TwoViewModel, TwoViewState, TwoIntent>() {
+class TwoFragment : BaseFragment<TwoViewState, TwoIntent>() {
 
     override val layoutId: Int = R.layout.fragment_two
 

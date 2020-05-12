@@ -10,7 +10,7 @@ import com.wosika.kale.viewmodel.IViewModel
 import com.wosika.kale.viewstate.IViewState
 import kotlinx.coroutines.*
 
-abstract class BaseViewModel<VS:IViewState,I:IIntent> : ViewModel(), IViewModel<I,VS> {
+abstract class BaseViewModel<VS : IViewState, I : IIntent> : ViewModel(), IViewModel<VS, I> {
 
     override fun viewStateObservable(): LiveData<VS> = viewStateLiveData
 

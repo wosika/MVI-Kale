@@ -13,15 +13,15 @@ import com.wosika.kale.view.IView
 import com.wosika.kale.viewstate.IViewState
 import kotlinx.coroutines.*
 
-abstract class BaseFragment<VM : BaseViewModel<VS, I>, VS : IViewState, I : IIntent> : Fragment(),
-    IView<VM, VS, I>, CoroutineScope by MainScope() {
+abstract class BaseFragment<VS : IViewState, I : IIntent> : Fragment(),
+    IView< VS, I>, CoroutineScope by MainScope() {
 
-    protected inline fun <reified VM : BaseViewModel<VS, I>> createViewModel(): VM {
+  /*  protected inline fun <reified VM : BaseViewModel<VS, I>> createViewModel(): VM {
         return ViewModelProvider(
             this
             // , ViewModelProvider.AndroidViewModelFactory(this.application)
         )[VM::class.java]
-    }
+    }*/
 
     protected abstract val layoutId: Int
 
@@ -36,7 +36,7 @@ abstract class BaseFragment<VM : BaseViewModel<VS, I>, VS : IViewState, I : IInt
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         //渲染数据
-        viewModel.viewStateObservable().observe(this, Observer { viewState ->
+        viewModel?.viewStateObservable()?.observe(this, Observer { viewState ->
             launch(Dispatchers.Main) {
                 render(viewState)
             }

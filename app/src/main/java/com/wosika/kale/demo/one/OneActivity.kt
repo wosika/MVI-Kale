@@ -6,11 +6,13 @@ import com.google.android.material.snackbar.Snackbar
 
 import com.wosika.kale.base.BaseActivity
 import com.wosika.kale.demo.R
+import com.wosika.kale.viewmodel.createViewModel
+
 import kotlinx.android.synthetic.main.activity_one.*
+import kotlin.reflect.KProperty
 
 
-
-class OneActivity : BaseActivity<OneViewModel, OneViewState, OneIntent>() {
+class OneActivity : BaseActivity<OneViewState, OneIntent>() {
 
 
     override val viewModel: OneViewModel by lazy { createViewModel<OneViewModel>() }
@@ -20,6 +22,8 @@ class OneActivity : BaseActivity<OneViewModel, OneViewState, OneIntent>() {
         setContentView(R.layout.activity_one)
         binds()
         viewModel.intent(OneIntent.InitIntent)
+
+
     }
 
     private fun binds() {
@@ -52,3 +56,4 @@ class OneActivity : BaseActivity<OneViewModel, OneViewState, OneIntent>() {
 
 
 }
+
