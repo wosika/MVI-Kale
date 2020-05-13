@@ -16,13 +16,6 @@ import kotlinx.coroutines.*
 abstract class BaseFragment<VS : IViewState, I : IIntent> : Fragment(),
     IView< VS, I>, CoroutineScope by MainScope() {
 
-  /*  protected inline fun <reified VM : BaseViewModel<VS, I>> createViewModel(): VM {
-        return ViewModelProvider(
-            this
-            // , ViewModelProvider.AndroidViewModelFactory(this.application)
-        )[VM::class.java]
-    }*/
-
     protected abstract val layoutId: Int
 
     override fun onCreateView(

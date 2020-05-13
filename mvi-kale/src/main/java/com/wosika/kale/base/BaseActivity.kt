@@ -13,15 +13,6 @@ abstract class BaseActivity<VS : IViewState, I : IIntent> :
     IView<VS, I>,
     AppCompatActivity(), CoroutineScope by MainScope() {
 
-/*
-    protected inline fun <reified VM : BaseViewModel<VS, I>> createViewModel(): VM {
-        return ViewModelProvider(
-            this
-            // , ViewModelProvider.AndroidViewModelFactory(this.application)
-        )[VM::class.java]
-    }
-*/
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //渲染数据
