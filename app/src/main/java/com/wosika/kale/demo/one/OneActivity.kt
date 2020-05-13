@@ -12,14 +12,13 @@ import kotlinx.android.synthetic.main.activity_one.*
 import kotlin.reflect.KProperty
 
 
-class OneActivity : BaseActivity<OneViewState, OneIntent>() {
+class OneActivity : BaseActivity<OneViewState, OneIntent>(R.layout.activity_one) {
 
 
     override val viewModel: OneViewModel by lazy { createViewModel<OneViewModel>() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_one)
         binds()
         viewModel.intent(OneIntent.InitIntent)
 

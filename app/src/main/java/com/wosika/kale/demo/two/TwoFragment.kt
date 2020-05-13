@@ -8,9 +8,8 @@ import com.wosika.kale.demo.R
 import com.wosika.kale.viewmodel.createViewModel
 import kotlinx.android.synthetic.main.activity_one.*
 
-class TwoFragment : BaseFragment<TwoViewState, TwoIntent>() {
+class TwoFragment : BaseFragment<TwoViewState, TwoIntent>(R.layout.fragment_two) {
 
-    override val layoutId: Int = R.layout.fragment_two
 
     override val viewModel: TwoViewModel by lazy { createViewModel<TwoViewModel>() }
 

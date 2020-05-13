@@ -9,9 +9,9 @@ import com.wosika.kale.viewstate.IViewState
 import kotlinx.coroutines.*
 
 
-abstract class BaseActivity<VS : IViewState, I : IIntent> :
-    IView<VS, I>,
-    AppCompatActivity(), CoroutineScope by MainScope() {
+abstract class BaseActivity<VS : IViewState, I : IIntent>(layoutId: Int) :
+    AppCompatActivity(layoutId),
+    IView<VS, I>, CoroutineScope by MainScope() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".one.OneActivity" />
         <activity android:name=".two.EmptyActivity" />
+        <activity android:name=".paging.PagingActivity" />
     </application>
 
 </manifest>

@@ -13,19 +13,8 @@ import com.wosika.kale.view.IView
 import com.wosika.kale.viewstate.IViewState
 import kotlinx.coroutines.*
 
-abstract class BaseFragment<VS : IViewState, I : IIntent> : Fragment(),
-    IView< VS, I>, CoroutineScope by MainScope() {
-
-    protected abstract val layoutId: Int
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(layoutId, container, false)
-    }
-
+abstract class BaseFragment<VS : IViewState, I : IIntent>(layoutId: Int) :
+    Fragment(layoutId), IView<VS, I>, CoroutineScope by MainScope() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         //渲染数据
