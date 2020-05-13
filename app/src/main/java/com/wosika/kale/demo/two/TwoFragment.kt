@@ -6,7 +6,10 @@ import com.google.android.material.snackbar.Snackbar
 import com.wosika.kale.base.BaseFragment
 import com.wosika.kale.demo.R
 import com.wosika.kale.viewmodel.createViewModel
+
 import kotlinx.android.synthetic.main.activity_one.*
+
+
 
 class TwoFragment : BaseFragment<TwoViewState, TwoIntent>(R.layout.fragment_two) {
 
