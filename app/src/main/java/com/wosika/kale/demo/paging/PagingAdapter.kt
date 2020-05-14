@@ -27,15 +27,15 @@ private val mDiffCallback: DiffUtil.ItemCallback<FeedItem> =
 class PagingAdapter : PagedListAdapter<FeedItem, PagingAdapter.ViewHolder>(mDiffCallback) {
 
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val textView = TextView(parent.context)
-        textView.text = "1111111"
         return ViewHolder(textView)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
+        val textView = holder.itemView as TextView
+        val item = getItem(position)
+        textView.text = item?.id
     }
 
 
