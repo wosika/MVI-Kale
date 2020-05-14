@@ -1,12 +1,14 @@
 package com.wosika.kale.demo.paging
 
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.wosika.kale.demo.R
 import com.wosika.kale.demo.entity.FeedItem
 import timber.log.Timber
 
@@ -28,8 +30,10 @@ class PagingAdapter : PagedListAdapter<FeedItem, PagingAdapter.ViewHolder>(mDiff
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val textView = TextView(parent.context)
-        return ViewHolder(textView)
+
+        return ViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.item_paging, parent, false)
+        )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

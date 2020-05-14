@@ -18,24 +18,13 @@ import timber.log.Timber
 class PagingViewModel : BaseViewModel<PagingViewState, PagingIntent>() {
 
 
-    private var liveData: LiveData<PagedList<FeedItem>> = getRefreshLiveData()
-
-    fun getRefreshLiveData(): LiveData<PagedList<FeedItem>> {
-        liveData = LivePagedListBuilder(
-            MyDataSourceFactory(), PagedList.Config.Builder()
-                .setPageSize(10) //配置分页加载的数量
-                .setEnablePlaceholders(false) //配置是否启动PlaceHolders
-                .setInitialLoadSizeHint(10) //初始化加载的数量
-
-                .build()
-        ).build()
-        return liveData
-    }
-
-
-    fun getLiveData(): LiveData<PagedList<FeedItem>> {
-        return liveData
-    }
+     val pageLiveData: LiveData<PagedList<FeedItem>> = LivePagedListBuilder(
+        MyDataSourceFactory(), PagedList.Config.Builder()
+            .setPageSize(10) //配置分页加载的数量
+            .setEnablePlaceholders(false) //配置是否启动PlaceHolders
+            .setInitialLoadSizeHint(10) //初始化加载的数量
+            .build()
+    ).build()
 
 
     override fun processIntent(intent: PagingIntent) {
@@ -51,7 +40,7 @@ class PagingViewModel : BaseViewModel<PagingViewState, PagingIntent>() {
             val data = FeedItem((startPosition + i).toString())
             list.add(data)
         }
-
+        Timber.d("加载数据完毕" + startPosition)
         return list
     }
 
@@ -65,7 +54,8 @@ class PagingViewModel : BaseViewModel<PagingViewState, PagingIntent>() {
     inner class MyDataSource : PositionalDataSource<FeedItem>() {
         override fun loadRange(params: LoadRangeParams, callback: LoadRangeCallback<FeedItem>) {
             viewModelScope.launch(Dispatchers.Main) {
-                callback.onResult(loadData(params.startPosition, 10))
+                val loadData = loadData(params.startPosition, 10)
+                callback.onResult(loadData);
             }
         }
 
@@ -74,10 +64,10 @@ class PagingViewModel : BaseViewModel<PagingViewState, PagingIntent>() {
             callback: LoadInitialCallback<FeedItem>
         ) {
             viewModelScope.launch(Dispatchers.Main) {
-                callback.onResult(loadData(0, 10), 0, 10);
+                val loadData = loadData(0, 10)
+                callback.onResult(loadData,0,10);
+                viewStateLiveData.postValue(PagingViewState(false))
             }
         }
-
-
     }
 }
