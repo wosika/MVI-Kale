@@ -10,18 +10,11 @@ import java.util.*
 
 //Get unique ID of the device
 object UniqueIdUtils {
-    private fun String.md5(): String {
-        val bytes = MessageDigest.getInstance("MD5").digest(this.toByteArray())
-        return bytes.hex()
-    }
-
-    private fun ByteArray.hex(): String {
-        return joinToString("") { "%02X".format(it) }
-    }
 
     /*
     * Gets a unique ID after the phone's andoridId+ MAC address +SerialNumber MD5
     * No need for permission
+    * It could be empty
     * */
     fun getUniqueId(context: Context): String? {
         val uniqueId = getAndroidId(context) + getMacAddressFromHardware() + getSerialNumber()
@@ -31,7 +24,6 @@ object UniqueIdUtils {
             null
         }
     }
-
 
     /**
      *
@@ -104,5 +96,14 @@ object UniqueIdUtils {
         return ""
     }
 
+
+    private fun String.md5(): String {
+        val bytes = MessageDigest.getInstance("MD5").digest(this.toByteArray())
+        return bytes.hex()
+    }
+
+    private fun ByteArray.hex(): String {
+        return joinToString("") { "%02X".format(it) }
+    }
 
 }
