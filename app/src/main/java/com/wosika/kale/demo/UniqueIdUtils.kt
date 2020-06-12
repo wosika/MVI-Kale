@@ -3,7 +3,6 @@ package com.wosika.kale.demo
 import android.content.Context
 import android.provider.Settings
 import android.text.TextUtils
-import com.wosika.kale.BuildConfig.DEBUG
 import java.lang.reflect.Method
 import java.net.NetworkInterface
 import java.security.MessageDigest
@@ -70,9 +69,7 @@ object UniqueIdUtils {
                 }
             }
         } catch (e: Exception) {
-            if (DEBUG) {
-                e.printStackTrace()
-            }
+            e.printStackTrace()
         }
         return serialNumber
     }
