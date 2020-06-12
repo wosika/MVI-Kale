@@ -2,6 +2,7 @@ package com.wosika.kale.demo
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.wosika.kale.demo.one.OneActivity
 import com.wosika.kale.demo.paging.PagingActivity
@@ -24,5 +25,11 @@ class MainActivity : AppCompatActivity() {
         btnToPaging.setOnClickListener {
             startActivity(Intent(this, PagingActivity::class.java))
         }
+
+
+        val macAddress = UniqueIdUtils.getUniqueId(this)
+
+        //  val androidId = UniqueIdUtils.getSerialNumber()
+        Log.d("tag", "androidid: $macAddress")
     }
 }

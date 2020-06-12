@@ -21,6 +21,8 @@ abstract class BaseActivity<VS : IViewState, I : IIntent>(layoutId: Int) :
                 render(viewState)
             }
         })
+
+
     }
 
 
