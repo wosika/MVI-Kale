@@ -14,7 +14,7 @@ import timber.log.Timber
 
 class PagingActivity : BaseActivity<PagingViewState, PagingIntent>(R.layout.activity_paging) {
 
-    override val viewModel: PagingViewModel by viewModel<PagingViewModel>()
+    override val viewModel: PagingViewModel by viewModel()
 
     val adapter: PagingAdapter by inject()
 
@@ -23,7 +23,6 @@ class PagingActivity : BaseActivity<PagingViewState, PagingIntent>(R.layout.acti
         initRecyclerView()
         srlRefresh.isRefreshing = true
         binds()
-
     }
 
     private fun binds() {
@@ -31,6 +30,7 @@ class PagingActivity : BaseActivity<PagingViewState, PagingIntent>(R.layout.acti
         srlRefresh.setOnRefreshListener {
             adapter.currentList?.dataSource?.invalidate()
         }
+
         viewModel.pageLiveData.observe(this, Observer {
             Timber.d("加载数据的回调")
             adapter.submitList(it)

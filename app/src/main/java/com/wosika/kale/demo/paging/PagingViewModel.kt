@@ -12,19 +12,21 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.koin.core.parameter.parametersOf
+import org.koin.experimental.property.inject
+import org.koin.ext.scope
 import timber.log.Timber
 
 
-class PagingViewModel : BaseViewModel<PagingViewState, PagingIntent>() {
+class PagingViewModel :
+    BaseViewModel<PagingViewState, PagingIntent>() {
 
 
-     val pageLiveData: LiveData<PagedList<FeedItem>> = LivePagedListBuilder(
-        MyDataSourceFactory(), PagedList.Config.Builder()
-            .setPageSize(10) //配置分页加载的数量
-            .setEnablePlaceholders(false) //配置是否启动PlaceHolders
-            .setInitialLoadSizeHint(10) //初始化加载的数量
-            .build()
-    ).build()
+    val pageLiveData: LiveData<PagedList<FeedItem>> by scope.inject(parameters = {
+        parametersOf(
+            MyDataSourceFactory()
+        )
+    })
 
 
     override fun processIntent(intent: PagingIntent) {
@@ -65,7 +67,7 @@ class PagingViewModel : BaseViewModel<PagingViewState, PagingIntent>() {
         ) {
             viewModelScope.launch(Dispatchers.Main) {
                 val loadData = loadData(0, 10)
-                callback.onResult(loadData,0,10);
+                callback.onResult(loadData, 0, 10);
                 viewStateLiveData.postValue(PagingViewState(false))
             }
         }
