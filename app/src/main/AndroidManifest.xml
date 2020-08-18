@@ -20,6 +20,7 @@
         <activity android:name=".one.OneActivity" />
         <activity android:name=".two.EmptyActivity" />
         <activity android:name=".paging.PagingActivity" />
+        <activity android:name=".qr.QrActivity" />
     </application>
 
 </manifest>

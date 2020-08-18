@@ -22,7 +22,6 @@ class OneActivity : BaseActivity<OneViewState, OneIntent>(R.layout.activity_one)
         binds()
         viewModel.intent(OneIntent.InitIntent)
 
-
     }
 
     private fun binds() {

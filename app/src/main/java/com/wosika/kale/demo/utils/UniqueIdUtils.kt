@@ -1,4 +1,4 @@
-package com.wosika.kale.demo
+package com.wosika.kale.demo.utils
 
 import android.content.Context
 import android.provider.Settings
@@ -17,7 +17,9 @@ object UniqueIdUtils {
     * It could be empty
     * */
     fun getUniqueId(context: Context): String? {
-        val uniqueId = getAndroidId(context) + getMacAddressFromHardware() + getSerialNumber()
+        val uniqueId = getAndroidId(
+            context
+        ) + getMacAddressFromHardware() + getSerialNumber()
         return if (uniqueId.isNotBlank()) {
             uniqueId.md5()
         } else {
