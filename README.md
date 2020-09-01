@@ -13,5 +13,5 @@
   2.Add the dependency
   
     dependencies {
-	           implementation 'com.github.wosika:MVI-Kale:V0.0.1'
+	           implementation 'com.github.wosika:MVI-Kale:V0.0.4'
     }
