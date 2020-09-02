@@ -2,7 +2,7 @@
 [![](https://jitpack.io/v/wosika/MVI-Kale.svg)](https://jitpack.io/#wosika/MVI-Kale)  [![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu) <br/>
 
 ## Work flow
-![avatar](https://github.com/wosika/MVI-Kale/blob/master/designs/work-flow.png)
+![](https://github.com/wosika/MVI-Kale/blob/master/designs/work-flow.png)
 
 依赖添加：<br/>
   1.Add it in your root build.gradle at the end of repositories:
