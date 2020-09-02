@@ -1,0 +1,6 @@
+@startuml
+==work flow==
+View -> ViewModel: Intent(intent)
+ViewModel -> ViewModel: processIntent(intent):ViewState
+ViewModel -> View: render(viewState)
+@endum
