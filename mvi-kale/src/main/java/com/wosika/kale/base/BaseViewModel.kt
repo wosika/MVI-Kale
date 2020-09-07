@@ -14,7 +14,8 @@ abstract class BaseViewModel<VS : IViewState, I : IIntent> : ViewModel(), IViewM
 
     override fun viewStateObservable(): LiveData<VS> = viewStateLiveData
 
-    protected val viewStateLiveData: MutableLiveData<VS> by lazy {
+    //允许修改
+    protected open val viewStateLiveData: MutableLiveData<VS> by lazy {
         MutableLiveData<VS>()
     }
 
