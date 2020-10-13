@@ -3,8 +3,7 @@
 
 ## Work flow
 ![](https://github.com/wosika/MVI-Kale/blob/master/designs/work-flow.png)
-
-依赖添加：<br/>
+### How to use
   1.Add it in your root build.gradle at the end of repositories:
 
 	allprojects {
