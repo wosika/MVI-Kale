@@ -31,7 +31,7 @@ class PagingActivity : BaseActivity<PagingViewState, PagingIntent>(R.layout.acti
             adapter.currentList?.dataSource?.invalidate()
         }
 
-        viewModel.pageLiveData.observe(this, Observer {
+        viewModel.pageLiveData.observe(this, {
             Timber.d("加载数据的回调")
             adapter.submitList(it)
         })

@@ -20,7 +20,7 @@ abstract class BaseActivity<VS : IViewState, I : IIntent>(@LayoutRes private val
         onSetContentView()
 
         //渲染数据
-        viewModel?.viewStateObservable()?.observe(this, Observer { viewState ->
+        viewModel?.viewStateObservable()?.observe(this, { viewState ->
             launch(Dispatchers.Main) {
                 render(viewState)
             }
