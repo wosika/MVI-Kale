@@ -1,6 +1,7 @@
 package com.wosika.kale.demo.qr
 
 
+import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.wosika.kale.base.BaseActivity
@@ -24,6 +25,10 @@ class QrActivity :
     val qrContent = "这是二维码的文本消息"
 
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(bind.root)
+    }
     override fun onStart() {
         super.onStart()
 

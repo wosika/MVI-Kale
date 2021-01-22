@@ -23,6 +23,7 @@ class PagingActivity : BaseActivity<PagingViewState, PagingIntent>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        setContentView(bind.root)
 
         initRecyclerView()
         bind.srlRefresh.isRefreshing = true
