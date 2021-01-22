@@ -5,15 +5,19 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.wosika.kale.base.BaseActivity
 import com.wosika.kale.demo.R
+import com.wosika.kale.demo.databinding.ActivityPagingBinding
+import com.wosika.kale.demo.databinding.ActivityQrBinding
 import com.wosika.kale.demo.utils.ZXingUtils
 import com.wosika.kale.intent.IIntent
 import com.wosika.kale.viewmodel.IViewModel
 import com.wosika.kale.viewstate.IViewState
-import kotlinx.android.synthetic.main.activity_qr.*
+
 import timber.log.Timber
 
 class QrActivity :
-    BaseActivity<IViewState, IIntent>(R.layout.activity_qr) {
+    BaseActivity<IViewState, IIntent>() {
+
+    val bind by lazy {  ActivityQrBinding.inflate(layoutInflater) }
 
     override val viewModel: IViewModel<IViewState, IIntent>? = null
 
@@ -22,12 +26,14 @@ class QrActivity :
 
     override fun onStart() {
         super.onStart()
-        ivQrCode.postDelayed({
-            Timber.d("ivQrCode.width${ivQrCode.width}")
-            Timber.d("ivQrCode.height${ivQrCode.height}")
-            val qrBitmap = ZXingUtils.createQRImage(qrContent, ivQrCode.width, ivQrCode.height)
+
+
+        bind.ivQrCode.postDelayed({
+            Timber.d("ivQrCode.width${bind.ivQrCode.width}")
+            Timber.d("ivQrCode.height${bind.ivQrCode.height}")
+            val qrBitmap = ZXingUtils.createQRImage(qrContent, bind.ivQrCode.width, bind.ivQrCode.height)
             qrBitmap?.let {
-                ivQrCode.setImageBitmap(it)
+                bind.ivQrCode.setImageBitmap(it)
             }
         }, 0)
     }

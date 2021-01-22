@@ -5,17 +5,20 @@ import android.content.Intent
 import android.graphics.Point
 import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.Display
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.wosika.kale.demo.databinding.ActivityMainBinding
 import com.wosika.kale.demo.one.OneActivity
+
 import com.wosika.kale.demo.paging.PagingActivity
 import com.wosika.kale.demo.qr.QrActivity
 import com.wosika.kale.demo.two.EmptyActivity
 import com.wosika.kale.demo.utils.UniqueIdUtils
-import kotlinx.android.synthetic.main.activity_main.*
+
 import java.lang.reflect.Method
 import java.math.BigDecimal
 
@@ -23,21 +26,27 @@ import java.math.BigDecimal
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        btnToActivity.setOnClickListener {
-            startActivity(Intent(this, OneActivity::class.java))
+
+        val bind = ActivityMainBinding.inflate(layoutInflater)
+
+        setContentView(bind.root)
+
+        bind.btnToActivity.setOnClickListener {
+           startActivity(Intent(this, OneActivity::class.java))
+          /*  val intent = Intent(Settings.ACTION_SETTINGS)
+            startActivity(intent)*/
         }
 
-        btnToFragment.setOnClickListener {
+        bind.btnToFragment.setOnClickListener {
             startActivity(Intent(this, EmptyActivity::class.java))
         }
 
-        btnToPaging.setOnClickListener {
+        bind.btnToPaging.setOnClickListener {
             startActivity(Intent(this, PagingActivity::class.java))
         }
 
-        btnToQr.setOnClickListener {
+        bind.btnToQr.setOnClickListener {
             startActivity(Intent(this, QrActivity::class.java))
         }
 
