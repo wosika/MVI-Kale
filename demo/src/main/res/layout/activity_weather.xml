@@ -22,14 +22,14 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center">
+            >
 
             <TextView
-                android:id="@+id/tvPlace"
+                android:layout_marginTop="150dp"
+                android:id="@+id/tvCity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text="海南 - 三亚"
                 android:textColor="#ffffff"
                 android:textSize="36sp" />
 
@@ -37,7 +37,7 @@
                 android:id="@+id/tvWeather"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvPlace"
+                android:layout_below="@id/tvCity"
                 android:layout_centerHorizontal="true"
                 android:textColor="#ffffff"
                 android:textSize="36sp" />

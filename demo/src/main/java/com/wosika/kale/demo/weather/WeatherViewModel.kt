@@ -28,7 +28,7 @@ class WeatherViewModel : BaseViewModel<WeatherViewState, WeatherIntent>() {
         addViewState(WeatherViewState(isRefresh = isRefresh))
         //网络请求天气数据
         val (_, _, result) =
-            "/simpleWeather/query".httpGet(listOf("city" to "三亚", "key" to "6880a0c6e99ba78cbbf7207fd35528b3")
+            "/simpleWeather/query".httpGet(listOf("city" to "雅安", "key" to "6880a0c6e99ba78cbbf7207fd35528b3")
             ).responseObject<BaseResult<Weather>>()
 
         result.fold({ data ->
