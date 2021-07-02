@@ -1,49 +1,43 @@
-package com.wosika.kale.demo.one
+package com.wosika.kale.demo.weather
 
 import android.os.Bundle
 import android.view.View
 import com.google.android.material.snackbar.Snackbar
 
 import com.wosika.kale.base.BaseActivity
-import com.wosika.kale.demo.R
 import com.wosika.kale.demo.databinding.ActivityOneBinding
 import com.wosika.kale.viewmodel.createViewModel
 
 
-
-
-
-class OneActivity : BaseActivity<OneViewState, OneIntent>() {
+class WeatherActivity : BaseActivity<WeatherViewState, WeatherIntent>() {
 
     val bind by lazy { ActivityOneBinding.inflate(layoutInflater) }
 
 
-    override val viewModel: OneViewModel by lazy { createViewModel<OneViewModel>() }
+    override val viewModel: WeatherViewModel by lazy { createViewModel<WeatherViewModel>() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-
         setContentView(bind.root)
 
         binds()
-        viewModel.intent(OneIntent.InitIntent)
+        viewModel.intent(WeatherIntent.InitIntent)
 
     }
 
     private fun binds() {
         bind.btnRetry.setOnClickListener {
-            viewModel.intent(OneIntent.InitIntent)
+            viewModel.intent(WeatherIntent.InitIntent)
         }
 
         bind.srlRefresh.setOnRefreshListener {
-            viewModel.intent(OneIntent.InitIntent)
+            viewModel.intent(WeatherIntent.InitIntent)
         }
     }
 
 
-    override fun render(viewState: OneViewState) {
+    override fun render(viewState: WeatherViewState) {
         bind.srlRefresh.isRefreshing = viewState.isRefresh
         if (!viewState.data.isNullOrBlank()) {
             bind.tvContent.text = viewState.data

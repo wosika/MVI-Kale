@@ -11,8 +11,7 @@ import com.wosika.kale.viewstate.IViewState
 
 import timber.log.Timber
 
-class QrActivity :
-    BaseActivity<IViewState, IIntent>() {
+class QrActivity : BaseActivity<IViewState, IIntent>() {
 
     val bind by lazy {  ActivityQrBinding.inflate(layoutInflater) }
 
@@ -20,15 +19,12 @@ class QrActivity :
 
     val qrContent = "这是二维码的文本消息"
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(bind.root)
     }
     override fun onStart() {
         super.onStart()
-
-
         bind.ivQrCode.postDelayed({
             Timber.d("ivQrCode.width${bind.ivQrCode.width}")
             Timber.d("ivQrCode.height${bind.ivQrCode.height}")

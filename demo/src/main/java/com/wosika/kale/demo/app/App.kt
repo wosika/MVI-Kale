@@ -18,7 +18,9 @@ class App : Application() {
             addRequestInterceptor {
                 LogRequestInterceptor(it)
             }
-            addResponseInterceptor { LogResponseInterceptor(it) }
+            addResponseInterceptor {
+                LogResponseInterceptor(it)
+            }
         }
     }
 }

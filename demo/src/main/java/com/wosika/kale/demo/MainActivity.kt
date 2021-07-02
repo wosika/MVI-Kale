@@ -5,14 +5,13 @@ import android.content.Intent
 import android.graphics.Point
 import android.os.Build
 import android.os.Bundle
-import android.provider.Settings
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.Display
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.wosika.kale.demo.databinding.ActivityMainBinding
-import com.wosika.kale.demo.one.OneActivity
+import com.wosika.kale.demo.weather.WeatherActivity
 import com.wosika.kale.demo.qr.QrActivity
 import com.wosika.kale.demo.two.EmptyActivity
 import com.wosika.kale.demo.utils.UniqueIdUtils
@@ -31,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(bind.root)
 
         bind.btnToActivity.setOnClickListener {
-           startActivity(Intent(this, OneActivity::class.java))
+           startActivity(Intent(this, WeatherActivity::class.java))
           /*  val intent = Intent(Settings.ACTION_SETTINGS)
             startActivity(intent)*/
         }

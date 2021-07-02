@@ -30,9 +30,7 @@ class TwoViewModel : BaseViewModel<TwoViewState, TwoIntent>() {
                 )
             } else {
                 viewStateLiveData.postValue(
-                    TwoViewState(
-                        error = Exception()
-                    )
+                    TwoViewState(error = Exception())
                 )
             }
         }

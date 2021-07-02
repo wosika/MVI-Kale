@@ -17,7 +17,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".one.OneActivity" />
+        <activity android:name=".weather.WeatherActivity" />
         <activity android:name=".two.EmptyActivity" />
         <activity android:name=".paging.PagingActivity" />
         <activity android:name=".qr.QrActivity" />
