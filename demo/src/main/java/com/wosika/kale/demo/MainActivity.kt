@@ -13,8 +13,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.wosika.kale.demo.databinding.ActivityMainBinding
 import com.wosika.kale.demo.one.OneActivity
-
-import com.wosika.kale.demo.paging.PagingActivity
 import com.wosika.kale.demo.qr.QrActivity
 import com.wosika.kale.demo.two.EmptyActivity
 import com.wosika.kale.demo.utils.UniqueIdUtils
@@ -42,9 +40,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, EmptyActivity::class.java))
         }
 
-        bind.btnToPaging.setOnClickListener {
-            startActivity(Intent(this, PagingActivity::class.java))
-        }
+
 
         bind.btnToQr.setOnClickListener {
             startActivity(Intent(this, QrActivity::class.java))

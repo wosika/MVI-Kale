@@ -10,7 +10,7 @@ import com.wosika.kale.viewmodel.IViewModel
 import com.wosika.kale.viewstate.IViewState
 import kotlinx.coroutines.*
 
-//todo 不应该将viewStateLiveData限制为MutableLiveData 还需要优化。
+
 abstract class BaseViewModel<VS : IViewState, I : IIntent> : ViewModel(), IViewModel<VS, I> {
     override fun viewStateObservable(): LiveData<VS> = viewStateLiveData
 

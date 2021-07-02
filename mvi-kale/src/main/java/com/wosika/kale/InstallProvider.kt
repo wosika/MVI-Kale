@@ -1,5 +1,6 @@
 package com.wosika.kale
 
+import android.annotation.SuppressLint
 import android.content.ContentProvider
 import android.content.ContentValues
 import android.content.Context
@@ -7,6 +8,7 @@ import android.database.Cursor
 import android.net.Uri
 
 //此处对外提供一个全局application
+@SuppressLint("StaticFieldLeak")
 lateinit var globalContext: Context
 class InstallProvider : ContentProvider() {
     override fun onCreate(): Boolean {

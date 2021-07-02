@@ -2,11 +2,7 @@ package com.wosika.kale.demo.qr
 
 
 import android.os.Bundle
-import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import com.wosika.kale.base.BaseActivity
-import com.wosika.kale.demo.R
-import com.wosika.kale.demo.databinding.ActivityPagingBinding
 import com.wosika.kale.demo.databinding.ActivityQrBinding
 import com.wosika.kale.demo.utils.ZXingUtils
 import com.wosika.kale.intent.IIntent

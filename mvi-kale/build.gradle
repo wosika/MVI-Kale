@@ -6,7 +6,6 @@ apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "29.0.3"
 
     defaultConfig {
         minSdkVersion 16
@@ -35,5 +34,5 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     //协程
     api 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2'
-    api "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0-beta01"
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0"
 }

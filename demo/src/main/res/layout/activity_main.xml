@@ -18,11 +18,6 @@
         android:text="去查看fragment示例" />
 
 
-    <Button
-        android:id="@+id/btnToPaging"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="去查看分页加载示例" />
 
     <Button
         android:id="@+id/btnToQr"
