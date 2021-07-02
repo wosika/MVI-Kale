@@ -9,7 +9,7 @@
         android:id="@+id/btnToActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="去查看activity示例" />
+        android:text="查看天气Activity示例" />
 
     <Button
         android:id="@+id/btnToFragment"

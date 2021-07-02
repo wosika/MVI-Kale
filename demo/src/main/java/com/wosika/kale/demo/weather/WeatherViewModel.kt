@@ -15,18 +15,17 @@ import timber.log.Timber
 
 class WeatherViewModel : BaseViewModel<WeatherViewState, WeatherIntent>() {
 
-
     override fun processIntent(intent: WeatherIntent) {
         when (intent) {
-            is WeatherIntent.InitIntent -> {
-                loadWeatherData()
+            is WeatherIntent.LoadWeatherIntent -> {
+                loadWeatherData(intent.isRefresh)
             }
         }
     }
 
-    private fun loadWeatherData() {
+    private fun loadWeatherData(isRefresh: Boolean = false) {
         //发送一个刷新的状态
-        viewStateLiveData.postValue(WeatherViewState(isRefresh = true))
+        addViewState(WeatherViewState(isRefresh = isRefresh))
         //网络请求天气数据
         val (_, _, result) =
             "/simpleWeather/query".httpGet(listOf("city" to "三亚", "key" to "6880a0c6e99ba78cbbf7207fd35528b3")
@@ -36,7 +35,7 @@ class WeatherViewModel : BaseViewModel<WeatherViewState, WeatherIntent>() {
             Timber.d(data.toString())
             //成功的返回数据
             Timber.d("请求成功")
-            addViewState(WeatherViewState(data = data.result.toString()))
+            addViewState(WeatherViewState(data = data.result))
         }, { error ->
             //失败
             Timber.e(error)

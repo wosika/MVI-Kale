@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         Log.d("tag", "屏幕尺寸 宽: ${getScreenInch(this)}")
         Log.d("tag", "屏幕尺寸 高: ${getScreenInch(this)}")
 
-        Toast.makeText(this, "屏幕尺寸：$mInch,屏幕宽$width，屏幕高$height", Toast.LENGTH_LONG).show()
+      //  Toast.makeText(this, "屏幕尺寸：$mInch,屏幕宽$width，屏幕高$height", Toast.LENGTH_LONG).show()
 
     }
 

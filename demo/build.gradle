@@ -57,4 +57,7 @@ dependencies {
 
     //qr code 二维码
     implementation 'com.google.zxing:core:3.4.1'
+
+    //天气的控件
+    implementation 'com.github.MatteoBattilana:WeatherView:3.0.0'
 }
