@@ -25,7 +25,7 @@ class WeatherViewModel : BaseViewModel<WeatherViewState, WeatherIntent>() {
 
     private fun loadWeatherData(isRefresh: Boolean = false) {
         //发送一个刷新的状态
-        addViewState(WeatherViewState(isRefresh = isRefresh))
+        addViewState(DataViewState(isRefresh = isRefresh))
         //网络请求天气数据
         val (_, _, result) =
             "/simpleWeather/query".httpGet(listOf("city" to "雅安", "key" to "6880a0c6e99ba78cbbf7207fd35528b3")
@@ -35,13 +35,15 @@ class WeatherViewModel : BaseViewModel<WeatherViewState, WeatherIntent>() {
             Timber.d(data.toString())
             //成功的返回数据
             Timber.d("请求成功")
-            addViewState(WeatherViewState(data = data.result))
+            addViewState(DataViewState(data = data.result))
         }, { error ->
             //失败
             Timber.e(error)
-            addViewState(WeatherViewState(error = error))
+            addViewState(DataViewState(error = error))
         })
     }
+
+    override val initState: WeatherViewState = InitViewState()
 
 }
 

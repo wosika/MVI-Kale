@@ -12,24 +12,20 @@ import com.wosika.kale.demo.databinding.FragmentTwoBinding
 import com.wosika.kale.viewmodel.createViewModel
 
 
-
-
-
 class TwoFragment : BaseFragment<TwoViewState, TwoIntent>() {
 
 
     override val viewModel: TwoViewModel by lazy { createViewModel<TwoViewModel>() }
 
-    lateinit var bind:FragmentTwoBinding
+    lateinit var bind: FragmentTwoBinding
 
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-
-        bind= FragmentTwoBinding.inflate(layoutInflater,container,false)
+    ): View {
+        bind = FragmentTwoBinding.inflate(layoutInflater, container, false)
         return bind.root
     }
 
@@ -53,19 +49,23 @@ class TwoFragment : BaseFragment<TwoViewState, TwoIntent>() {
     }
 
     override fun render(viewState: TwoViewState) {
-        bind.srlRefresh.isRefreshing = viewState.isRefresh
-        if (!viewState.data.isNullOrBlank()) {
-            bind.tvContent.text = viewState.data
-            bind.tvContent.visibility = View.VISIBLE
-        } else {
-            bind.tvContent.visibility = View.GONE
-        }
+        when (viewState) {
+            is InitViewState -> {
+                bind.srlRefresh.isRefreshing = viewState.isRefresh
+                if (!viewState.data.isNullOrBlank()) {
+                    bind.tvContent.text = viewState.data
+                    bind.tvContent.visibility = View.VISIBLE
+                } else {
+                    bind.tvContent.visibility = View.GONE
+                }
 
-        if (viewState.error != null) {
-            Snackbar.make(bind.root, "出现错误", Snackbar.LENGTH_SHORT).show()
-            bind.btnRetry.visibility = View.VISIBLE
-        } else {
-            bind.btnRetry.visibility = View.GONE
+                if (viewState.error != null) {
+                    Snackbar.make(bind.root, "出现错误", Snackbar.LENGTH_SHORT).show()
+                    bind.btnRetry.visibility = View.VISIBLE
+                } else {
+                    bind.btnRetry.visibility = View.GONE
+                }
+            }
         }
     }
 
