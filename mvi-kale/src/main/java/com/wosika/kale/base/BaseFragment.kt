@@ -11,6 +11,7 @@ import com.wosika.kale.intent.IIntent
 import com.wosika.kale.view.IView
 import com.wosika.kale.viewstate.IViewState
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.collect
 
 abstract class BaseFragment<VS : IViewState, I : IIntent>(@LayoutRes private val layoutId: Int? = null) :
     Fragment(), IView<VS, I>, CoroutineScope by MainScope() {
@@ -28,8 +29,8 @@ abstract class BaseFragment<VS : IViewState, I : IIntent>(@LayoutRes private val
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         //渲染数据
-        viewModel?.viewStateObservable()?.observe(viewLifecycleOwner) { viewState ->
-            launch(Dispatchers.Main) {
+        launch(Dispatchers.Main) {
+            viewModel?.viewStateObservable()?.collect { viewState ->
                 render(viewState)
             }
         }

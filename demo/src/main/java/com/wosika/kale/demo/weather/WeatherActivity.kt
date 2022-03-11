@@ -36,20 +36,30 @@ class WeatherActivity : BaseActivity<WeatherViewState, WeatherIntent>() {
 
     @SuppressLint("SetTextI18n")
     override fun render(viewState: WeatherViewState) {
-        bind.srlRefresh.isRefreshing = viewState.isRefresh
-        if (viewState.data != null) {
-            renderWeatherView(viewState.data)
-            bind.tvWeather.text = viewState.data.realtime.info
-            bind.tvTemperature.text = "${viewState.data.realtime.temperature}℃"
-            bind.tvCity.text = viewState.data.city
+        when(viewState){
+            is DataViewState -> {
+                bind.srlRefresh.isRefreshing = viewState.isRefresh
+                if (viewState.data != null) {
+                    renderWeatherView(viewState.data)
+                    bind.tvWeather.text = viewState.data.realtime.info
+                    bind.tvTemperature.text = "${viewState.data.realtime.temperature}℃"
+                    bind.tvCity.text = viewState.data.city
+                }
+                if (viewState.error != null) {
+                    Snackbar.make(
+                        bind.srlRefresh,
+                        viewState.error.message ?: "数据加载错误",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                }
+            }
+
+            is InitViewState -> {
+
+            }
+
         }
-        if (viewState.error != null) {
-            Snackbar.make(
-                bind.srlRefresh,
-                viewState.error.message ?: "数据加载错误",
-                Snackbar.LENGTH_SHORT
-            ).show()
-        }
+
     }
 
     //渲染天气

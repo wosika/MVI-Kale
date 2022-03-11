@@ -9,6 +9,7 @@ import com.wosika.kale.intent.IIntent
 import com.wosika.kale.view.IView
 import com.wosika.kale.viewstate.IViewState
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.collect
 
 
 abstract class BaseActivity<VS : IViewState, I : IIntent>(@LayoutRes private val layoutId: Int? = null) :
@@ -21,8 +22,10 @@ abstract class BaseActivity<VS : IViewState, I : IIntent>(@LayoutRes private val
         onSetContentView()
 
         //渲染数据
-        viewModel?.viewStateObservable()?.observe(this) { viewState ->
-            launch(Dispatchers.Main) {
+
+        launch(Dispatchers.Main) {
+            viewModel?.viewStateObservable()?.collect { viewState ->
+
                 render(viewState)
             }
         }
