@@ -18,3 +18,11 @@
     dependencies {
 	           implementation 'com.github.wosika:MVI-Kale:0.0.2'
     }
+### 0.0.2 Update 
+1.Replace LiveData to StateFlow.
+
+2.Upgrade gradle version.
+
+3.remove InstallProvider.
+
+4.set processIntent function to suspend.
