@@ -7,7 +7,7 @@ import kotlinx.coroutines.launch
 
 
 class TwoViewModel : BaseViewModel<TwoViewState, TwoIntent>() {
-    override fun processIntent(intent: TwoIntent) {
+    override suspend fun processIntent(intent: TwoIntent) {
         when (intent) {
             is TwoIntent.InitIntent -> {
                 initData()

@@ -15,7 +15,7 @@ import timber.log.Timber
 
 class WeatherViewModel : BaseViewModel<WeatherViewState, WeatherIntent>() {
 
-    override fun processIntent(intent: WeatherIntent) {
+    override suspend fun processIntent(intent: WeatherIntent) {
         when (intent) {
             is WeatherIntent.LoadWeatherIntent -> {
                 loadWeatherData(intent.isRefresh)

@@ -28,11 +28,11 @@ abstract class BaseFragment<VS : IViewState, I : IIntent>(@LayoutRes private val
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         //渲染数据
-        viewModel?.viewStateObservable()?.observe(this, { viewState ->
+        viewModel?.viewStateObservable()?.observe(viewLifecycleOwner) { viewState ->
             launch(Dispatchers.Main) {
                 render(viewState)
             }
-        })
+        }
     }
 
     override fun onDestroy() {

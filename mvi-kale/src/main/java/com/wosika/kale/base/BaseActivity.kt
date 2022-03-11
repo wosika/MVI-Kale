@@ -3,6 +3,7 @@ package com.wosika.kale.base
 import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import com.wosika.kale.intent.IIntent
 import com.wosika.kale.view.IView
@@ -20,11 +21,11 @@ abstract class BaseActivity<VS : IViewState, I : IIntent>(@LayoutRes private val
         onSetContentView()
 
         //渲染数据
-        viewModel?.viewStateObservable()?.observe(this, { viewState ->
+        viewModel?.viewStateObservable()?.observe(this) { viewState ->
             launch(Dispatchers.Main) {
                 render(viewState)
             }
-        })
+        }
     }
 
     //在oncreate的开头执行，可以在此初始化 view操作

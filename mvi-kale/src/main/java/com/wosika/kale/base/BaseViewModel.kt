@@ -46,7 +46,7 @@ abstract class BaseViewModel<VS : IViewState, I : IIntent> : ViewModel(), IViewM
         }
     }
 
-    protected abstract fun processIntent(intent: I)
+    protected abstract suspend fun processIntent(intent: I)
 
 }
 
