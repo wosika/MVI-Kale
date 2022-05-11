@@ -43,7 +43,7 @@ class WeatherViewModel : BaseViewModel<WeatherViewState, WeatherIntent>() {
         })
     }
 
-    override val initState: WeatherViewState = InitViewState()
+  //  override val initState: WeatherViewState = InitViewState()
 
 }
 

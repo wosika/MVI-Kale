@@ -5,14 +5,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import com.wosika.kale.intent.IIntent
 import com.wosika.kale.viewstate.IViewState
-import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.Flow
 
 //他要知道他处理的意图是什么
 interface IViewModel<VS : IViewState, I : IIntent> {
     //将intent 传输给Viewmodel去处理，处理完之后 回调
     fun intent(intent: I)
 
-    fun viewStateObservable(): StateFlow<VS>
+    fun viewStateObservable(): Flow<VS>
 
 }
 

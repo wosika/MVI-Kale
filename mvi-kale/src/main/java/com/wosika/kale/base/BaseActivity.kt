@@ -3,13 +3,11 @@ package com.wosika.kale.base
 import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.Observer
 import com.wosika.kale.intent.IIntent
 import com.wosika.kale.view.IView
 import com.wosika.kale.viewstate.IViewState
 import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.collect
+
 
 
 abstract class BaseActivity<VS : IViewState, I : IIntent>(@LayoutRes private val layoutId: Int? = null) :
@@ -25,7 +23,6 @@ abstract class BaseActivity<VS : IViewState, I : IIntent>(@LayoutRes private val
 
         launch(Dispatchers.Main) {
             viewModel?.viewStateObservable()?.collect { viewState ->
-
                 render(viewState)
             }
         }

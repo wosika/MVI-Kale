@@ -33,5 +33,5 @@ class TwoViewModel : BaseViewModel<TwoViewState, TwoIntent>() {
         }
     }
 
-    override val initState: TwoViewState = InitViewState()
+    //override val initState: TwoViewState = InitViewState()
 }
