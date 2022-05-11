@@ -16,7 +16,7 @@
   2.Add the dependency
   
     dependencies {
-	           implementation 'com.github.wosika:MVI-Kale:0.0.2'
+	           implementation 'com.github.wosika:MVI-Kale:0.0.3'
     }
 ### 0.0.2 Update 
 1.Replace LiveData to StateFlow.
