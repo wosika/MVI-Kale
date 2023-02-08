@@ -20,3 +20,7 @@ interface IViewModel<VS : IViewState, I : IIntent> {
 inline fun <reified VM : ViewModel> ViewModelStoreOwner.createViewModel(): VM {
     return ViewModelProvider(this)[VM::class.java]
 }
+
+inline fun <reified VM : ViewModel> ViewModelStoreOwner.createViewModel(factory: ViewModelProvider.Factory): VM {
+    return ViewModelProvider(this,factory)[VM::class.java]
+}
